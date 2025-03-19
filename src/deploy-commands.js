@@ -1,7 +1,9 @@
+require('module-alias/register');
+
 const { REST, Routes } = require('discord.js');
 
-const { loadFiles } = require('./utils/file-loader');
-const { TOKEN, CLIENT_ID, GUILD_ID } = require('./consts/config');
+const { loadFiles } = require('@/utils/file-loader');
+const { TOKEN, CLIENT_ID, GUILD_ID } = require('@/consts/config');
 
 const commands = [];
 const commandFiles = loadFiles('commands', true);

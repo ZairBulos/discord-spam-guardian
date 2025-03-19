@@ -1,4 +1,4 @@
-const { loadFiles } = require('../utils/file-loader');
+const { loadFiles } = require('@/utils/file-loader');
 
 const loadCommands = (client) => {
   const commands = loadFiles('commands', true);

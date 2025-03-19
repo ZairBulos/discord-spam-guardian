@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/ZairBulos/discord-spam-guardian#readme",
   "description": "",
+  "_moduleAliases": {
+    "@": "src"
+  },
   "dependencies": {
     "discord.js": "^14.18.0",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "module-alias": "^2.2.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
