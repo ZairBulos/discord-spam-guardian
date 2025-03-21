@@ -4,11 +4,18 @@ const { SPAM_PHRASES } = require('@/consts/spam-phrases');
 class SpamPhrasesValidator extends ContentValidator {
   constructor() {
     super();
+    this.spamRegexes = SPAM_PHRASES.map(phrase => {
+      const escapedPhrase = phrase
+        .toLowerCase()
+        .trim()
+        .replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+      return new RegExp(escapedPhrase, 'i');
+    });
   }
 
   validate(content) {
-    // TODO: Implement spam phrases validation
-    return false;
+    return this.spamRegexes.some(regex => regex.test(content));
   }
 }
 
