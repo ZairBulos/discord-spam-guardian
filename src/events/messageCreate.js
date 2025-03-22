@@ -1,6 +1,9 @@
 const { Events } = require('discord.js');
-const preprocessMessage = require('@/middlewares/preprocess-message');
+
+const metricsService = require('@/services/metrics');
 const ContentValidatorService = require('@/services/content-validator');
+
+const preprocessMessage = require('@/middlewares/preprocess-message');
 const SpamPhrasesValidator = require('@/validators/implementations/spam-phrases-validator');
 
 const validatorService = new ContentValidatorService([ new SpamPhrasesValidator() ]);
@@ -15,7 +18,7 @@ module.exports = {
 
     if (hasInvalidContent) {
       await message.delete();
-      console.log(`[WARNING] Deleted message from ${message.author.tag} for containing spam phrases.`);
+      metricsService.incrementMessagesDeleted();
     }
   }
 };
